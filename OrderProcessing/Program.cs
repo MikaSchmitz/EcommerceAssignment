@@ -1,9 +1,14 @@
+using OrderProcessing.Configuration;
+using OrderProcessing.Data.Setup;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// get appsettings data
+AppSettingsManager.Initialize(builder.Configuration);
 
+// Add services to the container.
+builder.Services.AddDataLayer();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
